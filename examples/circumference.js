@@ -1,7 +1,7 @@
 var 
   sys = require("sys"),
   jefe = new require("../lib/jefe"),  // change me as needed
-  elJefe = new jefe.Jefe({ recycleAfterN: 20 }),
+  elJefe = new jefe.Jefe({ recycleAfterN: 20}),
   scriptName = "circumference";
 
 // Create the script once. This will compile it and cache it.  This script will
@@ -14,7 +14,8 @@ var
 // would throw.
 
 try {
-  elJefe.compile(scriptName, "C = 2 * Math.PI * R");
+//  elJefe.compile(scriptName, "C = 2 * Math.PI * R", { maxTime: 1000});
+  elJefe.compile(scriptName, "process.pid", { maxTime: 1000});
 } catch (e) {
   sys.puts("problem compiling script: " + e);
   process.exit(1);
